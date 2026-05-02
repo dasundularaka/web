@@ -1,1 +1,271 @@
 
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasun Dularaka | Professional Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://media.licdn.com/dms/image/v2/D5603AQGGkjQsg76sKQ/profile-displayphoto-scale_200_200/B56ZtMQzgoHIAc-/0/1766511034815?e=1779321600&v=beta&t=T7_y7HwvEHHrxYfThfnpmAeHv8Wv4Gxs2NiUmuTa33Q">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome 6.5.2 (For Threads, X, etc.) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #e2e8f0; /* Slate 200 */
+        }
+        
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #818cf8; /* Indigo 400 */
+            border: 2px solid #0f172a; /* Slate 900 */
+            box-shadow: 0 0 0 3px #312e81; /* Indigo 900 */
+        }
+
+        /* Custom Scrollbar for the right pane */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
+
+    <div class="flex flex-col lg:flex-row min-h-screen">
+        
+        <!-- LEFT SIDEBAR (Fixed on Desktop) -->
+        <aside class="w-full lg:w-[400px] lg:fixed lg:h-screen bg-slate-950 shadow-[4px_0_24px_rgba(0,0,0,0.5)] z-20 flex flex-col justify-between overflow-y-auto border-r border-slate-800" data-aos="fade-right" data-aos-duration="1000">
+            <div class="p-8 lg:p-10">
+                <!-- Profile Image -->
+                <div class="w-40 h-40 mx-auto lg:mx-0 mb-6 relative">
+                    <div class="absolute inset-0 bg-indigo-500 rounded-2xl rotate-6 opacity-20"></div>
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQGGkjQsg76sKQ/profile-displayphoto-scale_200_200/B56ZtMQzgoHIAc-/0/1766511034815?e=1779321600&v=beta&t=T7_y7HwvEHHrxYfThfnpmAeHv8Wv4Gxs2NiUmuTa33Q" alt="Dasun Dularaka" class="w-full h-full object-cover rounded-2xl relative z-10 shadow-2xl shadow-black/50 border border-slate-800">
+                </div>
+
+                <!-- Basic Info -->
+                <h1 class="text-3xl font-bold text-white mb-2 text-center lg:text-left">Dasun Dularaka</h1>
+                <p class="text-indigo-400 font-medium mb-6 text-center lg:text-left bg-indigo-900/30 border border-indigo-500/20 inline-block px-3 py-1 rounded-full text-sm">Trainee Staff Assistant @ BOC</p>
+
+                <!-- Bio -->
+                <p class="text-slate-400 leading-relaxed mb-8 text-sm text-center lg:text-left">
+                    Enthusiastic and motivated recent high school graduate with strong analytical and communication skills. I am eager to apply my academic knowledge in a dynamic work environment and contribute to team success. A quick learner with passion, looking to gain practical experience and develop professionally.
+                </p>
+
+                <!-- Contact Info List -->
+                <ul class="space-y-4 text-sm text-slate-300">
+                    <li class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-indigo-400 shrink-0 border border-slate-700"><i class="fas fa-envelope"></i></div>
+                        <span class="break-all">dasundularaka@gmail.com</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-indigo-400 shrink-0 border border-slate-700"><i class="fas fa-phone"></i></div>
+                        <span>076 571 4446</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-indigo-400 shrink-0 border border-slate-700"><i class="fas fa-location-dot"></i></div>
+                        <span>6/14, Samadhi Mawatha,<br>Kalagedihena 11875</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-indigo-400 shrink-0 border border-slate-700"><i class="fas fa-calendar"></i></div>
+                        <span>27/09/2004 (<span id="calc-age"></span> years old)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Social Links Bottom -->
+            <div class="p-8 border-t border-slate-800 bg-slate-900/30">
+                <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+                    <a href="https://linkedin.com/in/dasun-dularaka" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 shadow flex items-center justify-center text-slate-400 hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition-all"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://facebook.com/dasundularaka" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 shadow flex items-center justify-center text-slate-400 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://Instagram.com/dasun_dularaka" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 shadow flex items-center justify-center text-slate-400 hover:bg-[#E4405F] hover:text-white hover:border-[#E4405F] transition-all"><i class="fab fa-instagram"></i></a>
+                    <a href="https://TikTok.com/dasun_dularaka" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 shadow flex items-center justify-center text-slate-400 hover:bg-black hover:text-white hover:border-slate-600 transition-all"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://threads.net/dasun_dularaka" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 shadow flex items-center justify-center text-slate-400 hover:bg-black hover:text-white hover:border-slate-600 transition-all"><i class="fa-brands fa-threads"></i></a>
+                    <a href="https://x.com/dasundularaka" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 shadow flex items-center justify-center text-slate-400 hover:bg-black hover:text-white hover:border-slate-600 transition-all"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://WhatsApp.com/+94765714446" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 shadow flex items-center justify-center text-slate-400 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://t.me/+94765714446" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 shadow flex items-center justify-center text-slate-400 hover:bg-[#0088cc] hover:text-white hover:border-[#0088cc] transition-all"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- RIGHT MAIN CONTENT (Scrollable on Desktop) -->
+        <main class="w-full lg:ml-[400px] flex-1 p-6 lg:p-16 max-w-5xl">
+            
+            <!-- EXPERIENCE SECTION -->
+            <section class="mb-20" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="text-3xl font-bold text-white">Work Experience</h2>
+                    <div class="h-px bg-slate-800 flex-1"></div>
+                </div>
+
+                <div class="border-l-2 border-slate-800 ml-6 pl-8 py-2 space-y-12">
+                    <!-- Job 1 -->
+                    <div class="relative timeline-dot group">
+                        <div class="mb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                            <h3 class="text-xl font-bold text-slate-100">Trainee Staff Assistant</h3>
+                            <span class="bg-indigo-900/50 border border-indigo-500/30 text-indigo-300 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap mt-2 sm:mt-0 w-fit">02/01/2026 - Present</span>
+                        </div>
+                        <p class="text-slate-400 font-medium mb-2"><i class="fas fa-building text-indigo-500 mr-2"></i>Bank Of Ceylon (Pettah Business Centre)</p>
+                    </div>
+
+                    <!-- Job 2 -->
+                    <div class="relative timeline-dot group">
+                        <div class="mb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                            <h3 class="text-xl font-bold text-slate-100">Gold Loan Officer</h3>
+                            <span class="bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap mt-2 sm:mt-0 w-fit">07/04/2025 - 31/12/2025</span>
+                        </div>
+                        <p class="text-slate-400 font-medium mb-2"><i class="fas fa-building text-indigo-500 mr-2"></i>Citizens Development Business Finance PLC</p>
+                    </div>
+
+                    <!-- Job 3 -->
+                    <div class="relative timeline-dot group">
+                        <div class="mb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                            <h3 class="text-xl font-bold text-slate-100">Trainee Executive</h3>
+                            <span class="bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap mt-2 sm:mt-0 w-fit">13/05/2024 - 30/03/2025</span>
+                        </div>
+                        <p class="text-slate-400 font-medium mb-2"><i class="fas fa-building text-indigo-500 mr-2"></i>GEMA Engineering Solutions (Pvt) Ltd.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EDUCATION SECTION -->
+            <section class="mb-20" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="text-3xl font-bold text-white">Education</h2>
+                    <div class="h-px bg-slate-800 flex-1"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- A/L Card -->
+                    <div class="bg-slate-800/50 rounded-2xl p-6 shadow-lg border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                        <div class="w-12 h-12 bg-indigo-900/40 rounded-xl flex items-center justify-center text-indigo-400 text-xl mb-4 border border-indigo-500/20">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-100 mb-1">G.C.E. Advanced Level</h3>
+                        <p class="text-slate-400 text-sm mb-4">Year: 2023 | Stream: <strong class="text-slate-200">Biology</strong></p>
+                        
+                        <div class="bg-slate-900/80 rounded-lg p-4 mb-4 border border-slate-800">
+                            <p class="text-center font-bold text-slate-200">Overall Result: 2C, 1S</p>
+                        </div>
+                        
+                        <div class="flex gap-2">
+                            <span class="flex-1 bg-slate-900 border border-slate-700 text-center py-2 rounded-lg text-sm shadow-inner"><span class="block text-slate-500 text-xs">Biology</span> <strong class="text-indigo-400">C</strong></span>
+                            <span class="flex-1 bg-slate-900 border border-slate-700 text-center py-2 rounded-lg text-sm shadow-inner"><span class="block text-slate-500 text-xs">Chemistry</span> <strong class="text-indigo-400">C</strong></span>
+                            <span class="flex-1 bg-slate-900 border border-slate-700 text-center py-2 rounded-lg text-sm shadow-inner"><span class="block text-slate-500 text-xs">Physics</span> <strong class="text-indigo-400">S</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- O/L Card -->
+                    <div class="bg-slate-800/50 rounded-2xl p-6 shadow-lg border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                        <div class="w-12 h-12 bg-indigo-900/40 rounded-xl flex items-center justify-center text-indigo-400 text-xl mb-4 border border-indigo-500/20">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-100 mb-1">G.C.E. Ordinary Level</h3>
+                        <p class="text-slate-400 text-sm mb-4">Year: 2020</p>
+                        
+                        <div class="bg-slate-900/80 rounded-lg p-4 mb-4 border border-slate-800">
+                            <p class="text-center font-bold text-slate-200">Overall Result: 6A, 1B, 2C</p>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-900/30 border border-indigo-500/20 text-indigo-300 px-3 py-1 rounded-md text-sm">Buddhism: <strong>A</strong></span>
+                            <span class="bg-indigo-900/30 border border-indigo-500/20 text-indigo-300 px-3 py-1 rounded-md text-sm">History: <strong>A</strong></span>
+                            <span class="bg-indigo-900/30 border border-indigo-500/20 text-indigo-300 px-3 py-1 rounded-md text-sm">Maths: <strong>A</strong></span>
+                            <span class="bg-indigo-900/30 border border-indigo-500/20 text-indigo-300 px-3 py-1 rounded-md text-sm">Science: <strong>A</strong></span>
+                            <span class="bg-indigo-900/30 border border-indigo-500/20 text-indigo-300 px-3 py-1 rounded-md text-sm">English: <strong>A</strong></span>
+                            <span class="bg-indigo-900/30 border border-indigo-500/20 text-indigo-300 px-3 py-1 rounded-md text-sm">Music: <strong>A</strong></span>
+                            <span class="bg-slate-700/50 border border-slate-600 text-slate-300 px-3 py-1 rounded-md text-sm">Sinhala: <strong>B</strong></span>
+                            <span class="bg-slate-800 border border-slate-700 text-slate-400 px-3 py-1 rounded-md text-sm">Commerce: <strong>C</strong></span>
+                            <span class="bg-slate-800 border border-slate-700 text-slate-400 px-3 py-1 rounded-md text-sm">Tech: <strong>C</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACHIEVEMENTS SECTION -->
+            <section class="mb-10" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="text-3xl font-bold text-white">Achievements</h2>
+                    <div class="h-px bg-slate-800 flex-1"></div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 bg-slate-800/50 p-5 rounded-2xl shadow-lg border border-slate-700 hover:border-amber-500/30 transition-colors">
+                        <div class="w-12 h-12 bg-amber-900/20 border border-amber-500/20 rounded-full flex items-center justify-center text-amber-500 text-xl shrink-0">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-100">1ˢᵗ Place</h4>
+                            <p class="text-slate-400 text-sm">Science Quiz Competition in the Western Province</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-slate-800/50 p-5 rounded-2xl shadow-lg border border-slate-700 hover:border-amber-500/30 transition-colors">
+                        <div class="w-12 h-12 bg-amber-900/20 border border-amber-500/20 rounded-full flex items-center justify-center text-amber-500 text-xl shrink-0">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-100">1ˢᵗ Place</h4>
+                            <p class="text-slate-400 text-sm">Science Quiz Competition in the Gampaha Educational Zone</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <footer class="pt-8 border-t border-slate-800 text-center text-slate-500 text-sm lg:hidden">
+                 © <span id="current-year"></span> Dasun Dularaka.
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Scroll Animations
+        AOS.init({
+            once: true,
+            offset: 30,
+            duration: 800
+        });
+
+        // Calculate Age Dynamically
+        const calculateAge = (dob) => {
+            const birthDate = new Date(dob);
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDifference = today.getMonth() - birthDate.getMonth();
+            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        };
+
+        // Inject Age
+        document.getElementById('calc-age').innerText = calculateAge('2004-09-27');
+        
+        // Inject current year in mobile footer
+        if(document.getElementById('current-year')) {
+            document.getElementById('current-year').innerText = new Date().getFullYear();
+        }
+    </script>
+</body>
+</html>
