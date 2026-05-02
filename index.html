@@ -1,224 +1,286 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasun Dularaka | Professional Portfolio</title>
+    <title>Dasun Dularaka | Personal Portfolio</title>
     
-    <!-- Favicon -->
+    <!-- Favicon setting -->
     <link rel="icon" type="image/png" href="https://media.licdn.com/dms/image/v2/D5603AQGGkjQsg76sKQ/profile-displayphoto-scale_200_200/B56ZtMQzgoHIAc-/0/1766511034815?e=1779321600&v=beta&t=T7_y7HwvEHHrxYfThfnpmAeHv8Wv4Gxs2NiUmuTa33Q">
     
-    <!-- Tailwind CSS with Dark Mode Configuration -->
+    <!-- Tailwind CSS for rapid styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
     
-    <!-- FontAwesome 6.5.2 -->
+    <!-- FontAwesome for Social/UI Icons (Updated to latest version for Threads & X support) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     
-    <!-- AOS CSS -->
+    <!-- AOS CSS for scroll animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Apply transition to the entire document */
-        html {
-            transition: background-color 0.3s ease;
-        }
-        
         body {
-            font-family: 'Outfit', sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc;
+            overflow-x: hidden;
         }
         
-        /* Base Light Mode Background */
-        html { background-color: #f8fafc; }
-        /* Base Dark Mode Background */
-        html.dark { background-color: #0f172a; }
-
-        .timeline-dot::before {
-            content: '';
-            position: absolute; left: -29px; top: 6px;
-            width: 12px; height: 12px; border-radius: 50%;
-            background-color: #4f46e5; border: 2px solid #fff;
-            box-shadow: 0 0 0 3px #e0e7ff;
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
         }
 
-        .dark .timeline-dot::before {
-            background-color: #818cf8; border: 2px solid #0f172a;
-            box-shadow: 0 0 0 3px #312e81;
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            color: #34d399;
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
 </head>
-<body class="antialiased selection:bg-indigo-500 selection:text-white dark:bg-slate-900 dark:text-slate-200 bg-slate-50 text-slate-700">
+<body class="antialiased selection:bg-teal-400 selection:text-slate-900">
 
-    <div class="flex flex-col lg:flex-row min-h-screen">
-        
-        <!-- LEFT SIDEBAR -->
-        <aside class="w-full lg:w-[400px] lg:fixed lg:h-screen bg-white dark:bg-slate-950 shadow-xl z-20 flex flex-col justify-between overflow-y-auto border-r border-slate-100 dark:border-slate-800 transition-colors duration-300">
-            <div class="p-8 lg:p-10 relative">
-                <!-- Theme Switcher Button -->
-                <button id="theme-toggle" class="absolute top-8 right-8 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-amber-400 hover:ring-2 ring-indigo-500 transition-all z-30">
-                    <i id="theme-icon" class="fas fa-sun text-lg"></i>
-                </button>
+    <!-- HERO SECTION -->
+    <header class="min-h-screen flex items-center justify-center relative overflow-hidden px-6 pt-10">
+        <!-- Background decorative blobs -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl mix-blend-screen"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl mix-blend-screen"></div>
 
-                <!-- Profile Image -->
-                <div class="w-40 h-40 mx-auto lg:mx-0 mb-6 relative">
-                    <div class="absolute inset-0 bg-indigo-500 rounded-2xl rotate-6 opacity-20"></div>
-                    <img src="https://media.licdn.com/dms/image/v2/D5603AQGGkjQsg76sKQ/profile-displayphoto-scale_200_200/B56ZtMQzgoHIAc-/0/1766511034815?e=1779321600&v=beta&t=T7_y7HwvEHHrxYfThfnpmAeHv8Wv4Gxs2NiUmuTa33Q" alt="Dasun Dularaka" class="w-full h-full object-cover rounded-2xl relative z-10 shadow-lg border border-slate-200 dark:border-slate-800">
+        <div class="container mx-auto max-w-5xl z-10" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="glass-panel p-8 md:p-12 flex flex-col md:flex-row items-center gap-10">
+                <div class="w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQGGkjQsg76sKQ/profile-displayphoto-scale_200_200/B56ZtMQzgoHIAc-/0/1766511034815?e=1779321600&v=beta&t=T7_y7HwvEHHrxYfThfnpmAeHv8Wv4Gxs2NiUmuTa33Q" alt="Dasun Dularaka" class="w-full h-full object-cover rounded-full border-4 border-slate-700 shadow-2xl shadow-sky-900/50">
                 </div>
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-3 tracking-tight">Dasun <span class="text-gradient">Dularaka</span></h1>
+                    <p class="text-xl md:text-2xl text-slate-300 mb-6 font-medium">Trainee Staff Assistant @ Bank Of Ceylon</p>
+                    
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-slate-400 mb-8">
+                        <span class="flex items-center gap-2"><i class="fas fa-envelope text-sky-400"></i> dasundularaka@gmail.com</span>
+                        <span class="flex items-center gap-2"><i class="fas fa-phone text-sky-400"></i> 076 571 4446</span>
+                        <span class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-sky-400"></i> Kalagedihena, 11875</span>
+                    </div>
 
-                <h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-2 text-center lg:text-left">Dasun Dularaka</h1>
-                <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-6 text-center lg:text-left bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-200 dark:border-indigo-500/20 inline-block px-3 py-1 rounded-full text-sm">Trainee Staff Assistant @ Bank Of Ceylon</p>
+                    <p class="text-slate-300 leading-relaxed max-w-2xl">
+                        Enthusiastic and motivated recent high school graduate with strong analytical and communication skills. I am eager to apply my academic knowledge in a dynamic work environment and contribute to team success. A quick learner with passion, looking to gain practical experience and develop professionally.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
 
-                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 text-sm text-center lg:text-left">
-                    Enthusiastic and motivated recent high school graduate with strong analytical and communication skills. I am eager to apply my academic knowledge in a dynamic work environment and contribute to team success.
-                </p>
-
-                <ul class="space-y-4 text-sm text-slate-600 dark:text-slate-300">
-                    <li class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0 border border-slate-200 dark:border-slate-700"><i class="fas fa-envelope"></i></div>
-                        <span class="break-all">dasundularaka@gmail.com</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0 border border-slate-200 dark:border-slate-700"><i class="fas fa-phone"></i></div>
-                        <span>076 571 4446</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0 border border-slate-200 dark:border-slate-700"><i class="fas fa-location-dot"></i></div>
-                        <span>6/14, Samadhi Mawatha,<br>Kalagedihena 11875</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0 border border-slate-200 dark:border-slate-700"><i class="fas fa-calendar"></i></div>
-                        <span>27/09/2004 (<span id="calc-age"></span> years old)</span>
-                    </li>
+    <!-- PERSONAL DETAILS & ACHIEVEMENTS -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Info Card -->
+            <div class="glass-panel p-8" data-aos="fade-right">
+                <h2 class="text-2xl font-bold mb-6 border-b border-slate-700 pb-2"><i class="fas fa-user-circle text-emerald-400 mr-2"></i>Personal Details</h2>
+                <ul class="space-y-4 text-slate-300">
+                    <li class="flex justify-between border-b border-slate-800 pb-2"><strong>Date of Birth:</strong> <span>27/09/2004</span></li>
+                    <li class="flex justify-between border-b border-slate-800 pb-2"><strong>Age:</strong> <span id="calc-age" class="text-emerald-400 font-bold"></span></li>
+                    <li class="flex justify-between border-b border-slate-800 pb-2"><strong>Address:</strong> <span class="text-right">6/14, Samadhi Mawatha,<br>Kalagedihena 11875</span></li>
                 </ul>
             </div>
 
-            <!-- Social Links Bottom -->
-            <div class="p-8 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30">
-                <div class="flex flex-wrap justify-center lg:justify-start gap-3">
-                    <a href="https://linkedin.com/in/dasun-dularaka" target="_blank" class="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#0077b5] hover:text-white transition-all"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://facebook.com/dasundularaka" target="_blank" class="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#1877F2] hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://threads.net/dasun_dularaka" target="_blank" class="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-black hover:text-white transition-all"><i class="fa-brands fa-threads"></i></a>
-                    <a href="https://x.com/dasundularaka" target="_blank" class="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-black hover:text-white transition-all"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://WhatsApp.com/+94765714446" target="_blank" class="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#25D366] hover:text-white transition-all"><i class="fab fa-whatsapp"></i></a>
+            <!-- Achievements -->
+            <div class="glass-panel p-8" data-aos="fade-left">
+                <h2 class="text-2xl font-bold mb-6 border-b border-slate-700 pb-2"><i class="fas fa-trophy text-emerald-400 mr-2"></i>Achievements</h2>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center flex-shrink-0 text-yellow-400">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-100">1ˢᵗ Place</h3>
+                            <p class="text-slate-400">Science Quiz Competition in the Western Province</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center flex-shrink-0 text-yellow-400">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-100">1ˢᵗ Place</h3>
+                            <p class="text-slate-400">Science Quiz Competition in the Gampaha Educational Zone</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </aside>
 
-        <!-- RIGHT MAIN CONTENT -->
-        <main class="w-full lg:ml-[400px] flex-1 p-6 lg:p-16 max-w-5xl">
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="py-20 px-6 bg-slate-900/50 border-y border-slate-800 relative z-10">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-3xl font-bold mb-10 text-center"><span class="text-gradient">Professional</span> Experience</h2>
             
-            <!-- EXPERIENCE SECTION -->
-            <section class="mb-20" data-aos="fade-up">
-                <div class="flex items-center gap-4 mb-8">
-                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Work Experience</h2>
-                    <div class="h-px bg-slate-200 dark:bg-slate-800 flex-1"></div>
-                </div>
-
-                <div class="border-l-2 border-slate-200 dark:border-slate-800 ml-6 pl-8 py-2 space-y-12">
-                    <div class="relative timeline-dot group">
-                        <div class="mb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100">Trainee Staff Assistant</h3>
-                            <span class="bg-indigo-100 dark:bg-indigo-900/50 border border-indigo-200 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-300 text-xs font-bold px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit">2026 - Present</span>
-                        </div>
-                        <p class="text-slate-500 dark:text-slate-400 font-medium mb-2"><i class="fas fa-building text-indigo-500 mr-2"></i>Bank Of Ceylon (Pettah Business Centre)</p>
+            <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-sky-500 before:to-emerald-500">
+                
+                <!-- Experience 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active" data-aos="fade-up">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-sky-500 text-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                        <i class="fas fa-building-columns"></i>
                     </div>
-
-                    <div class="relative timeline-dot group">
-                        <div class="mb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100">Gold Loan Officer</h3>
-                            <span class="bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit">2025</span>
-                        </div>
-                        <p class="text-slate-500 dark:text-slate-400 font-medium mb-2"><i class="fas fa-building text-indigo-500 mr-2"></i>Citizens Development Business Finance PLC</p>
+                    <div class="glass-panel p-6 w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] hover:border-sky-500/50 transition-colors">
+                        <span class="text-sky-400 font-semibold text-sm">02/01/2026 - Present</span>
+                        <h3 class="font-bold text-xl text-white mt-1">Trainee Staff Assistant</h3>
+                        <p class="text-slate-300">Bank Of Ceylon (Pettah Business Centre)</p>
                     </div>
                 </div>
-            </section>
 
-            <!-- EDUCATION SECTION -->
-            <section class="mb-20" data-aos="fade-up">
-                <div class="flex items-center gap-4 mb-8">
-                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Education</h2>
-                    <div class="h-px bg-slate-200 dark:bg-slate-800 flex-1"></div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white dark:bg-slate-800/50 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 hover:border-indigo-500/50 transition-colors">
-                        <div class="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/40 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-xl mb-4 border border-indigo-100 dark:border-indigo-500/20">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-1">G.C.E. A/L</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Stream: <strong>Biology</strong> (2023)</p>
-                        <div class="bg-slate-50 dark:bg-slate-900/80 rounded-lg p-4 border border-slate-100 dark:border-slate-800">
-                            <p class="text-center font-bold text-slate-700 dark:text-slate-200 text-sm">Results: 2C, 1S</p>
-                        </div>
+                <!-- Experience 2 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-up">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-emerald-500 text-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                        <i class="fas fa-coins"></i>
                     </div>
-
-                    <div class="bg-white dark:bg-slate-800/50 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 hover:border-indigo-500/50 transition-colors">
-                        <div class="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/40 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-xl mb-4 border border-indigo-100 dark:border-indigo-500/20">
-                            <i class="fas fa-school"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-1">G.C.E. O/L</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Year: 2020</p>
-                        <div class="bg-slate-50 dark:bg-slate-900/80 rounded-lg p-4 border border-slate-100 dark:border-slate-800">
-                            <p class="text-center font-bold text-slate-700 dark:text-slate-200 text-sm">Results: 6A, 1B, 2C</p>
-                        </div>
+                    <div class="glass-panel p-6 w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] hover:border-emerald-500/50 transition-colors">
+                        <span class="text-emerald-400 font-semibold text-sm">07/04/2025 - 31/12/2025</span>
+                        <h3 class="font-bold text-xl text-white mt-1">Gold Loan Officer</h3>
+                        <p class="text-slate-300">Citizens Development Business Finance PLC</p>
                     </div>
                 </div>
-            </section>
-        </main>
-    </div>
 
-    <!-- Scripts -->
+                <!-- Experience 3 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-up">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-sky-500 text-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="glass-panel p-6 w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] hover:border-sky-500/50 transition-colors">
+                        <span class="text-sky-400 font-semibold text-sm">13/05/2024 - 30/03/2025</span>
+                        <h3 class="font-bold text-xl text-white mt-1">Trainee Executive</h3>
+                        <p class="text-slate-300">GEMA Engineering Solutions (Pvt) Ltd.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold mb-10 text-center">Academic <span class="text-gradient">Background</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- A/L -->
+                <div class="glass-panel p-8" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="flex justify-between items-center mb-4 text-sky-400">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-book-open text-2xl"></i>
+                            <h3 class="text-xl font-bold text-white">G.C.E. A/L</h3>
+                        </div>
+                        <span class="text-sm bg-sky-900/50 px-3 py-1 rounded-full border border-sky-500/30">2023</span>
+                    </div>
+                    <p class="text-slate-300 mb-4 border-b border-slate-700 pb-2">Stream: <strong>Biology</strong><br>Result: <strong>2C, 1S</strong></p>
+                    <div class="grid grid-cols-2 gap-2 text-sm text-slate-300">
+                        <span>Biology: <strong class="text-white">C</strong></span>
+                        <span>Chemistry: <strong class="text-white">C</strong></span>
+                        <span>Physics: <strong class="text-white">S</strong></span>
+                    </div>
+                </div>
+
+                <!-- O/L -->
+                <div class="glass-panel p-8" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="flex justify-between items-center mb-4 text-emerald-400">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-school text-2xl"></i>
+                            <h3 class="text-xl font-bold text-white">G.C.E. O/L</h3>
+                        </div>
+                        <span class="text-sm bg-emerald-900/50 px-3 py-1 rounded-full border border-emerald-500/30">2020</span>
+                    </div>
+                    <p class="text-slate-300 mb-4 border-b border-slate-700 pb-2">Result: <strong>6A, 1B, 2C</strong></p>
+                    <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-sm text-slate-300">
+                        <span>Buddhism: <strong class="text-sky-400">A</strong></span>
+                        <span>History: <strong class="text-sky-400">A</strong></span>
+                        <span>Maths: <strong class="text-sky-400">A</strong></span>
+                        <span>Science: <strong class="text-sky-400">A</strong></span>
+                        <span>English: <strong class="text-sky-400">A</strong></span>
+                        <span>Music: <strong class="text-sky-400">A</strong></span>
+                        <span>Sinhala: <strong class="text-emerald-400">B</strong></span>
+                        <span>Commerce: <strong class="text-white">C</strong></span>
+                        <span>Tech: <strong class="text-white">C</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / SOCIALS -->
+    <footer class="bg-slate-950 py-12 border-t border-slate-800 relative z-10">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-8">Connect With Me</h2>
+            
+            <div class="flex flex-wrap justify-center gap-6 mb-10">
+                <a href="https://linkedin.com/in/dasun-dularaka" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-xl text-slate-300 social-icon hover:bg-[#0077b5] hover:text-white border border-slate-700"><i class="fab fa-linkedin-in"></i></a>
+                
+                <a href="https://facebook.com/dasundularaka" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-xl text-slate-300 social-icon hover:bg-[#1877F2] hover:text-white border border-slate-700"><i class="fab fa-facebook-f"></i></a>
+                
+                <a href="https://Instagram.com/dasun_dularaka" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-xl text-slate-300 social-icon hover:bg-[#E4405F] hover:text-white border border-slate-700"><i class="fab fa-instagram"></i></a>
+                
+                <a href="https://TikTok.com/dasun_dularaka" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-xl text-slate-300 social-icon hover:bg-[#000000] hover:text-white border border-slate-700"><i class="fab fa-tiktok"></i></a>
+                
+                <a href="https://threads.net/dasun_dularaka" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-xl text-slate-300 social-icon hover:bg-[#000000] hover:text-white border border-slate-700"><i class="fa-brands fa-threads"></i></a>
+                
+                <a href="https://x.com/dasundularaka" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-xl text-slate-300 social-icon hover:bg-[#000000] hover:text-white border border-slate-700"><i class="fa-brands fa-x-twitter"></i></a>
+                
+                <a href="https://WhatsApp.com/+94765714446" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-xl text-slate-300 social-icon hover:bg-[#25D366] hover:text-white border border-slate-700"><i class="fab fa-whatsapp"></i></a>
+                
+                <a href="https://t.me/+94765714446" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-xl text-slate-300 social-icon hover:bg-[#0088cc] hover:text-white border border-slate-700"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+            
+            <p class="text-slate-500 text-sm">© <span id="current-year"></span> Dasun Dularaka. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts for animations and dynamic data -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, offset: 30, duration: 800 });
-
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const htmlElement = document.documentElement;
-
-        const updateIcon = (isDark) => {
-            themeIcon.className = isDark ? 'fas fa-sun text-lg' : 'fas fa-moon text-lg';
-        };
-
-        themeToggle.addEventListener('click', () => {
-            htmlElement.classList.toggle('dark');
-            const isDark = htmlElement.classList.contains('dark');
-            updateIcon(isDark);
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        // Initialize Animations
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800
         });
 
-        // Sync initial state
-        if (localStorage.getItem('theme') === 'light') {
-            htmlElement.classList.remove('dark');
-            updateIcon(false);
-        } else {
-            htmlElement.classList.add('dark');
-            updateIcon(true);
-        }
-
+        // Calculate Age Dynamically
         const calculateAge = (dob) => {
             const birthDate = new Date(dob);
             const today = new Date();
             let age = today.getFullYear() - birthDate.getFullYear();
-            const m = today.getMonth() - birthDate.getMonth();
-            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+            const monthDifference = today.getMonth() - birthDate.getMonth();
+            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
             return age;
         };
+
+        // YYYY-MM-DD format for Date parser
         document.getElementById('calc-age').innerText = calculateAge('2004-09-27');
+        
+        // Set Current Year in Footer
+        document.getElementById('current-year').innerText = new Date().getFullYear();
     </script>
 </body>
 </html>
