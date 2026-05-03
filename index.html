@@ -11,7 +11,7 @@
     <!-- Tailwind CSS for rapid styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- FontAwesome for Social/UI Icons (Updated to latest version for Threads & X support) -->
+    <!-- FontAwesome for Social/UI Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     
     <!-- AOS CSS for scroll animations -->
@@ -56,9 +56,32 @@
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        /* Prevent scrolling while preloader is active */
+        body.loading {
+            overflow: hidden;
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-teal-400 selection:text-slate-900">
+<body class="antialiased selection:bg-teal-400 selection:text-slate-900 loading">
+
+    <!-- PRELOADER -->
+    <div id="preloader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0f172a] transition-opacity duration-700 ease-in-out">
+        <div class="relative flex items-center justify-center w-24 h-24 mb-6">
+            <!-- Outer spinning ring (Sky Blue) -->
+            <div class="absolute inset-0 rounded-full border-t-4 border-l-4 border-sky-400/20 border-t-sky-400 animate-spin"></div>
+            <!-- Inner spinning ring (Emerald Green, reverse) -->
+            <div class="absolute inset-2 rounded-full border-b-4 border-r-4 border-emerald-400/20 border-b-emerald-400 animate-[spin_1.5s_linear_reverse_infinite]"></div>
+            <!-- Center Text Initials -->
+            <span class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-sky-400 to-emerald-400 animate-pulse">DD</span>
+        </div>
+        <div class="flex items-center gap-1 text-slate-400 text-sm font-medium tracking-[0.3em]">
+            <span>LOADING</span>
+            <span class="animate-bounce" style="animation-delay: 0s">.</span>
+            <span class="animate-bounce" style="animation-delay: 0.1s">.</span>
+            <span class="animate-bounce" style="animation-delay: 0.2s">.</span>
+        </div>
+    </div>
 
     <!-- HERO SECTION -->
     <header class="min-h-screen flex items-center justify-center relative overflow-hidden px-6 pt-10">
@@ -66,7 +89,7 @@
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl mix-blend-screen"></div>
         <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl mix-blend-screen"></div>
 
-        <div class="container mx-auto max-w-5xl z-10" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="container mx-auto max-w-5xl z-10" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">
             <div class="glass-panel p-8 md:p-12 flex flex-col md:flex-row items-center gap-10">
                 <div class="w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
                     <img src="https://media.licdn.com/dms/image/v2/D5603AQGGkjQsg76sKQ/profile-displayphoto-scale_200_200/B56ZtMQzgoHIAc-/0/1766511034815?e=1779321600&v=beta&t=T7_y7HwvEHHrxYfThfnpmAeHv8Wv4Gxs2NiUmuTa33Q" alt="Dasun Dularaka" class="w-full h-full object-cover rounded-full border-4 border-slate-700 shadow-2xl shadow-sky-900/50">
@@ -257,6 +280,24 @@
     <!-- Scripts for animations and dynamic data -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Preloader Logic
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            const body = document.body;
+            
+            // Wait an extra half second so the preloader is actually visible for a moment
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                body.classList.remove('loading'); // Restore scrolling
+                
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    // Re-trigger AOS animations if they were blocked by the preloader
+                    AOS.refresh(); 
+                }, 700); // Wait for the fade-out CSS transition to finish
+            }, 500); 
+        });
+
         // Initialize Animations
         AOS.init({
             once: true,
